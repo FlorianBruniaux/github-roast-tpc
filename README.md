@@ -28,6 +28,40 @@ Technical principle: orchestrate, do not rewrite. Existing building blocks (orga
 - `agents/` : four agents (`readme-critic`, `github-profile-analyst`, `keyword-strategist`, `linkedin-analyst`)
 - `signals.md` : shared signal grid, the single source of truth
 
+## Requirements
+
+- Claude Code (the plugin runs inside it, there is nothing to deploy or host).
+- The GitHub CLI `gh`, authenticated (`gh auth login`). It is the core data source: profile, repos, pinned items, contribution timeline, commits, issues and PRs.
+- Optional: a StarMapper instance for organic score and stargazer geography. The skills call its public HTTP API when available and fall back to raw `gh` signals otherwise. Nothing to run locally.
+
+## Install
+
+This repo is a single-plugin Claude Code marketplace. From inside Claude Code:
+
+```
+/plugin marketplace add FlorianBruniaux/github-roast-tpc
+/plugin install github-roast-tpc@github-roast-tpc
+```
+
+The first command registers the marketplace (it reads `.claude-plugin/marketplace.json`), the second installs the plugin. Restart Claude Code if the slash commands do not show up immediately.
+
+Local development, to test changes before pushing:
+
+```
+/plugin marketplace add /absolute/path/to/github-roast-tpc
+/plugin install github-roast-tpc@github-roast-tpc
+```
+
+Verify it loaded with `/help`: the `gh-readme`, `gh-profile`, `gh-score`, `gh-keywords`, `gh-linkedin` and `gh-next` commands should be listed.
+
+## Using the skills
+
+Two ways to trigger the plugin once installed.
+
+Slash commands drive a specific stage on demand, for example `/gh-profile USERNAME` or `/gh-readme owner/repo` (full list below). Each command loads its skill and the matching agent.
+
+Skills also fire automatically from natural language. Asking "audit my github" or "is this README AI-generated?" loads the relevant skill without typing a command. For a full end-to-end run, use the one-shot meta-prompt in the section further down.
+
 ## Usage
 
 Review a single README:
