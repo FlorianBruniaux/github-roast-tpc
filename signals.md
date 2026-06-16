@@ -53,6 +53,14 @@ Les siens mis en avant vs une contribution à 1 commit sur un gros repo (cas vu 
 
 Commits le weekend = hobby et side projects vs uniquement professionnel. Spike à l'arrivée des assistants IA. Ni plus ni moins, ça dépend du poste recherché.
 
+## Vie du projet (issues et PR)
+
+Le repo vit-il ou semble-t-il abandonné. Croiser la date du dernier push, qui ouvre les issues (l'auteur pour son suivi vs de vrais utilisateurs qui rapportent des bugs ou demandent des features), et la nature des PR (contributions externes vs Dependabot ou pure maintenance). Un repo vitrine sans activité récente mérite une mention "en pause" assumée plutôt qu'un doute sur l'abandon. Cas vu en live : un repo en stand-by, l'auteur freelance n'a juste pas le temps, le dire haut et clair vaut mieux que de laisser croire à un projet mort.
+
+## Outil pour soi (scratch your own itch)
+
+L'auteur a construit le projet pour son propre besoin et l'utilise au quotidien. Signal fort côté recrutement, même avec peu d'étoiles : ça prouve une vraie problématique et un usage réel, pas un exercice. Cas vus en live : un outil de code review et un job crawler, tous deux construits pour résoudre un problème que l'auteur vivait. Indices : issues que l'auteur s'ouvre lui-même, dogfooding visible, un projet qui colle à un besoin clairement vécu.
+
 ## Docs LLM (discoverability AEO)
 
 De plus en plus de projets publient un fichier machine pour les moteurs de réponse et les assistants (ChatGPT, Perplexity, Claude). Vérifier à la racine la présence de `llms.txt`, `llms-full.txt` et leurs variantes (`llm.txt`, `.well-known/llms.txt`). Présent : bon signal, un dev qui pense à la façon dont les LLM citent son projet. Absent sur un projet outil : occasion ratée, correctif rapide à proposer. Format de référence sur llmstxt.org.

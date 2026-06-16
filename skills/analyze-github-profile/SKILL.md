@@ -66,6 +66,14 @@ gh api repos/{username}/{repo}/languages
 ```
 Les messages de commit donnent la langue, la convention (conventional commits ou non), l'intention lisible (feat, fix), et le `Co-Authored-By` éventuel.
 
+Vie du projet (issues et PR, l'endpoint issues inclut les PR via le champ `pull_request`) :
+```
+gh api "repos/{username}/{repo}/issues?state=all&per_page=30" \
+  --jq '.[] | {title, state, author: .user.login, pr: (.pull_request != null), created: .created_at}'
+gh api repos/{username}/{repo} --jq '{pushed: .pushed_at, open_issues: .open_issues_count, archived: .archived}'
+```
+Distinguer les issues que l'auteur s'ouvre à lui-même pour son suivi, des bug reports ou demandes de vrais utilisateurs. Distinguer les PR externes des PR Dependabot ou de pure maintenance. Date du dernier push pour juger si le projet vit ou est en stand-by.
+
 Docs LLM et SEO (pour chaque repo phare) :
 ```
 gh api repos/{username}/{repo}/contents/llms.txt --jq '.name' 2>/dev/null
@@ -83,6 +91,10 @@ Cohérence de DA et de naming. Comparer les noms de repos, les descriptions, le 
 Pinned. Distinguer les repos dont l'auteur est vraiment le moteur de ceux où il a une contribution mineure sur un gros projet. Interroger sans condamner.
 
 Timeline. Rythme weekend vs uniquement pro, et tout spike marqué à l'arrivée des assistants IA. Ni bien ni mal en soi, ça dépend du poste visé.
+
+Vie du projet. Le repo vit-il ou semble-t-il abandonné. Croiser date du dernier push, qui ouvre les issues (auteur pour son suivi vs vrais utilisateurs), et nature des PR (externes vs Dependabot ou maintenance). Un repo vitrine sans activité récente gagne une mention "en pause" plutôt que de laisser planer le doute. Le faire savoir sans condamner : l'open source est chronophage, une pause assumée vaut mieux qu'un abandon apparent.
+
+Outil pour soi (scratch your own itch). Repérer si l'auteur a construit le projet pour son propre besoin et l'utilise au quotidien. C'est un signal fort côté recrutement même sans étoiles : il prouve une vraie problématique et un usage réel, pas un exercice. Indices : issues que l'auteur s'ouvre lui-même, dogfooding visible, un projet qui résout un problème clairement vécu par l'auteur.
 
 README de profil. Présent et type CV, ou absent. Un profil orienté recrutement sans README de profil rate une occasion.
 
