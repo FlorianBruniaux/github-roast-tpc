@@ -1,87 +1,87 @@
 # github-roast-tpc
 
-Plugin Claude Code qui analyse un profil GitHub à travers l'intention de son auteur. Il évalue les README, détecte les marqueurs IA, lit les signaux recruteur, et conseille des keywords pour la findability. Issu du live TPC GitHub Roast (ep. 2).
+A Claude Code plugin that audits a GitHub profile through its author's intent. It reviews READMEs, flags AI-generated markers, reads recruiter signals, and suggests keywords for findability. Born from [The Product Crew (TPC) GitHub Roast live, ep. 2](https://www.youtube.com/watch?v=gfDBEUImB-A).
 
-## Philosophie
+## Philosophy
 
-On lit chaque repo via son objectif, pas via la qualité du code dans l'absolu. Quatre objectifs servent de grille : faire un gros projet, lever des fonds, se faire recruter, faire du business. Peu d'étoiles ne veut pas dire peu de valeur.
+Each repo is read against its objective, not against code quality in the abstract. Four objectives form the grid: build a flagship, raise funds, get hired, run a business. Few stars does not mean low value.
 
-Principe technique : on orchestre, on ne réécrit pas. Les briques qui existent déjà (organic score et géo côté StarMapper, détection anti-AI côté skills perso) sont appelées, pas dupliquées.
+Technical principle: orchestrate, do not rewrite. Existing building blocks (organic score and geo on the StarMapper side, anti-AI detection on the personal skills side) are called, not duplicated.
 
-## État
+## Status
 
-| Phase | Contenu | Statut |
+| Phase | Content | Status |
 |-------|---------|--------|
-| 0 | Scaffold plugin | fait |
-| 1 | eval-readme (skill + agent readme-critic) | fait |
-| 2 | analyze-github-profile (objectif, pins, timeline, commits) | fait |
-| 3 | score-profile (note /5 + tableau + correctifs) | fait |
-| 4a | suggest-keywords (findability, SEO, cross-linking) | fait |
-| 4b | analyze-linkedin-profile (entrée multimodale) | fait |
-| 5 | route-next-steps (offres TPC / draft post Reddit) | fait |
-| 6 | packaging communautaire | à venir |
+| 0 | Plugin scaffold | done |
+| 1 | eval-readme (skill + readme-critic agent) | done |
+| 2 | analyze-github-profile (objective, pins, timeline, commits) | done |
+| 3 | score-profile (/5 grade + table + fixes) | done |
+| 4a | suggest-keywords (findability, SEO, cross-linking) | done |
+| 4b | analyze-linkedin-profile (multimodal input) | done |
+| 5 | route-next-steps (TPC offers / Reddit post draft) | done |
+| 6 | community packaging | upcoming |
 
-## Composants Phase 0-1
+## Components
 
-- `commands/gh-readme.md` : commande `/gh-readme <repo>` pour évaluer un README seul
-- `skills/eval-readme/SKILL.md` : critères et procédure d'évaluation
-- `agents/readme-critic.md` : agent qui récupère et critique le README
-- `signals.md` : grille de signaux partagée (source unique Florian + Gabriel)
+- `commands/` : six slash commands (`gh-readme`, `gh-profile`, `gh-score`, `gh-keywords`, `gh-linkedin`, `gh-next`)
+- `skills/` : six skills holding the procedures and grids
+- `agents/` : four agents (`readme-critic`, `github-profile-analyst`, `keyword-strategist`, `linkedin-analyst`)
+- `signals.md` : shared signal grid, the single source of truth
 
 ## Usage
 
-Évaluer un README seul :
+Review a single README:
 
 ```
 /gh-readme owner/repo
 ```
 
-L'agent récupère le README via l'API GitHub, applique la grille `eval-readme`, et rend un verdict human/IA, des points forts, et des correctifs prêts à appliquer.
+The agent fetches the README via the GitHub API, applies the `eval-readme` grid, and returns a human/AI verdict, strengths, and ready-to-apply fixes.
 
-Analyser un profil complet :
+Analyze a full profile:
 
 ```
 /gh-profile username
 ```
 
-L'agent récupère repos, pinned, timeline et commits, détecte l'objectif principal de l'auteur, et rend une fiche profil avec les signaux par catégorie et les points d'attention.
+The agent fetches repos, pinned items, timeline and commits, detects the author's main objective, and returns a profile sheet with signals by category and points of attention.
 
-Noter un profil /5 avec correctifs :
+Score a profile out of 5 with fixes:
 
 ```
 /gh-score username
 ```
 
-Enchaîne analyse de profil, éval du README phare, puis note /5 pondérée par l'objectif détecté, tableau de signaux, et correctifs triés par retour sur effort.
+Chains profile analysis, flagship README review, then a /5 grade weighted by the detected objective, a signal table, and fixes sorted by return on effort.
 
-Optimiser la findability :
+Optimize findability:
 
 ```
 /gh-keywords username
 ```
 
-Propose des descriptions et topics riches en mots-clés réels par repo, une bio optimisée, et les liens cross-platform manquants. Tout est copiable directement dans GitHub.
+Suggests keyword-rich descriptions and topics per repo, an optimized bio, and the missing cross-platform links. Everything is copy-paste ready into GitHub.
 
-Croiser ton LinkedIn avec ton GitHub :
+Cross-check your LinkedIn against your GitHub:
 
 ```
 /gh-linkedin username
 ```
 
-Tu fournis ton propre profil (screenshots ou copier-coller), l'agent vérifie l'alignement avec ton GitHub et rend les correctifs. Zéro scraping, zéro stockage.
+You provide your own profile (screenshots or pasted text), the agent checks the alignment with your GitHub and returns fixes. No scraping, no storage.
 
-Passer à l'action :
+Plan next steps:
 
 ```
 /gh-next username
 ```
 
-Branche sur ton objectif. Piste taf : checklist de correctifs puis pont vers les offres TPC. Piste diffusion : draft de post Reddit ou LinkedIn prêt à poster.
+Branches on your objective. Job track: a fix checklist then a bridge to TPC offers. Outreach track: a Reddit or LinkedIn post draft ready to publish.
 
 ## Configuration
 
-Le lien des offres d'emploi TPC (utilisé par `/gh-next`, piste taf) n'est pas codé en dur. Renseigne-le ici ou fournis-le au moment de l'usage :
+The TPC job offers link (used by `/gh-next`, job track) is not hardcoded. Set it here or provide it at runtime:
 
 ```
-TPC_OFFRES_URL = (à renseigner)
+TPC_OFFERS_URL = (to fill in)
 ```
