@@ -15,7 +15,7 @@ Principe technique : on orchestre, on ne réécrit pas. Les briques qui existent
 | 0 | Scaffold plugin | fait |
 | 1 | eval-readme (skill + agent readme-critic) | fait |
 | 2 | analyze-github-profile (objectif, pins, timeline, commits) | fait |
-| 3 | score-profile (note /5 + tableau + correctifs) | à venir |
+| 3 | score-profile (note /5 + tableau + correctifs) | fait |
 | 4 | suggest-keywords + analyze-linkedin-profile | à venir |
 | 5 | routing (offres TPC / draft post Reddit) | à venir |
 | 6 | packaging communautaire | à venir |
@@ -44,3 +44,11 @@ Analyser un profil complet :
 ```
 
 L'agent récupère repos, pinned, timeline et commits, détecte l'objectif principal de l'auteur, et rend une fiche profil avec les signaux par catégorie et les points d'attention.
+
+Noter un profil /5 avec correctifs :
+
+```
+/gh-score username
+```
+
+Enchaîne analyse de profil, éval du README phare, puis note /5 pondérée par l'objectif détecté, tableau de signaux, et correctifs triés par retour sur effort.
