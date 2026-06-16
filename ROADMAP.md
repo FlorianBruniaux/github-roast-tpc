@@ -1,4 +1,4 @@
-# Roadmap github-review (Phase 2 à 6)
+# Roadmap github-roast-tpc (Phase 2 à 6)
 
 Suite du scaffold Phase 0-1. Couvre l'analyse de profil GitHub complète, l'éval LinkedIn, et l'élargissement des signaux. Chaque phase liste skills, agents, entrées, sorties.
 
@@ -54,7 +54,7 @@ Skill `analyze-linkedin-profile` + agent `linkedin-analyst` (sonnet). Pas d'API 
 - Copier-coller du texte (headline, about, expériences).
 - Exploration API à creuser plus tard si une voie conforme existe (LinkedIn API officielle sur scopes limités), jamais de scraping.
 
-Analyse : cohérence headline / about / expériences, alignement avec le GitHub (les deux racontent-ils la même histoire), storytelling enterré (le cas Michael, super histoire invisible sur le profil), signal open-to-work, keywords et SEO LinkedIn, cohérence de DA et naming cross-platform.
+Analyse : cohérence headline / about / expériences, alignement avec le GitHub (les deux racontent-ils la même histoire), storytelling enterré (cas vu en live : une vraie belle histoire de parcours, invisible sur le profil), signal open-to-work, keywords et SEO LinkedIn, cohérence de DA et naming cross-platform.
 
 Sortie : trous identifiés, alignement GitHub/LinkedIn, correctifs (remonter le storytelling, harmoniser les liens, ajouter les keywords manquants).
 

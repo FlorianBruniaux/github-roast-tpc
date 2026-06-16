@@ -1,6 +1,6 @@
-# github-review
+# github-roast-tpc
 
-Plugin Claude Code qui analyse un profil GitHub à travers l'intention de son auteur. Il évalue les README, détecte les marqueurs IA, lit les signaux recruteur, et conseille des keywords pour la findability. Issu du live TPC GitHub Review (ep. 2).
+Plugin Claude Code qui analyse un profil GitHub à travers l'intention de son auteur. Il évalue les README, détecte les marqueurs IA, lit les signaux recruteur, et conseille des keywords pour la findability. Issu du live TPC GitHub Roast (ep. 2).
 
 ## Philosophie
 

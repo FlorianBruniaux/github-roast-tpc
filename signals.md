@@ -33,11 +33,11 @@ Langue (anglais attendu sur un repo vitrine), conventional commits, intention li
 
 ## Profil
 
-README de profil type CV, cohérence de DA et de naming entre repos (le cas whispem / whispem-lang / whisphub). Liens cross-platform LinkedIn vers GitHub vers Medium pour la findability et le SEO.
+README de profil type CV, cohérence de DA et de naming entre repos (cas vu en live : trois variantes proches d'un même nom de projet entre repos, qui brouillent l'image). Liens cross-platform LinkedIn vers GitHub vers Medium pour la findability et le SEO.
 
 ## Pinned repos
 
-Les siens mis en avant vs une contribution à 1 commit sur un gros repo (le cas Michael, le pin à 50 étoiles avec une seule PR de doc). Interroger sans condamner : fierté, mise en avant, ou flou volontaire.
+Les siens mis en avant vs une contribution à 1 commit sur un gros repo (cas vu en live : un pin à 50 étoiles dont l'auteur n'a fourni qu'une seule PR de doc). Interroger sans condamner : fierté, mise en avant, ou flou volontaire.
 
 ## Timeline de contributions
 
