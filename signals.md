@@ -2,6 +2,16 @@
 
 Référence partagée Florian + Gabriel. Chaque skill et agent du plugin lit cette grille. Les deux relecteurs ne regardent pas les mêmes signaux, ce fichier est là pour ne pas diverger. Ajoutez vos signaux ici plutôt que dans le code.
 
+## Discipline de preuve (règle transversale)
+
+S'applique à tous les skills, au reporting comme aux recommandations.
+
+Tout chiffre avancé (étoiles, forks, contributions, downloads, speedup, taille de binaire) cite la commande gh ou la source qui l'a produit. Un chiffre non vérifiable se marque `[à vérifier]`, jamais avancé comme un fait.
+
+La même rigueur vaut pour ce qu'on recommande de publier. Un agrégat de stars dans une bio se calcule en additionnant des compteurs vérifiés et on montre le détail. Un intitulé de poste ou d'employeur proposé doit être réel, pas inventé. L'outil ne doit jamais faire commettre à l'utilisateur le claim gonflé qu'il reproche ailleurs.
+
+Quand plusieurs sources d'un même chiffre divergent (header, tableau, roadmap, description), ne pas en élire une comme vérité. Signaler la divergence, dire où trancher (le code, l'enum, le compteur live), puis aligner toutes les sources sur la valeur vérifiée.
+
 ## Objectif détecté (le fil rouge)
 
 Quatre intentions, cumul possible. L'agent doit toujours en proposer une principale.

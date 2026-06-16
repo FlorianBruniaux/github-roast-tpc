@@ -17,6 +17,8 @@ La fiche profil produite par `analyze-github-profile`, plus si disponible l'éva
 2. Noter chaque catégorie de la grille ci-dessous, pondérée par l'objectif.
 3. Agréger en une note /5 et lister les correctifs, du plus rentable au moins rentable.
 
+Montrer le calcul de la note, pas seulement le résultat. Afficher le poids de chaque catégorie et l'arithmétique (par exemple 4×0,4 + 3×0,3 + 3×0,2 + 4×0,1 = 3,5). Une note sans son détail n'est pas auditable. Tout chiffre repris dans la notation suit la discipline de preuve de `signals.md` : sourcé par une commande gh, ou marqué `[à vérifier]`.
+
 ## Pondération par objectif
 
 Chaque objectif déplace le poids des catégories. Ce qui compte pour l'un est secondaire pour l'autre.

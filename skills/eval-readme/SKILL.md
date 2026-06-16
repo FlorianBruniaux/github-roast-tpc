@@ -31,6 +31,8 @@ Nuance : un fichier `llms.txt` ou un README explicitement destiné à être ing�
 
 Licence présente. Le quoi et le pourquoi en haut. Installation. Usage avec exemples. Mention ou badge "en pause" si la maintenance est arrêtée, pour éviter l'impression d'abandon sur un repo vitrine. Docs LLM : présence d'un `llms.txt` ou `llms-full.txt` à la racine, signal de discoverability moderne (voir `signals.md`). Absent sur un projet outil, c'est un correctif rapide à proposer.
 
+Cohérence des chiffres. Un même chiffre répété (nombre de fonctionnalités, étoiles dans une table comparative, version) doit être identique partout : header, tableaux, roadmap, description GitHub. Si les sources divergent, ne pas élire une valeur comme vraie : signaler la divergence, dire où trancher (le code, le compteur live), puis aligner. Voir la discipline de preuve dans `signals.md`.
+
 ## Sortie
 
 Rendre dans cet ordre :
