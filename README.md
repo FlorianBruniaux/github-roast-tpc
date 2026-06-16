@@ -14,7 +14,7 @@ Principe technique : on orchestre, on ne réécrit pas. Les briques qui existent
 |-------|---------|--------|
 | 0 | Scaffold plugin | fait |
 | 1 | eval-readme (skill + agent readme-critic) | fait |
-| 2 | analyze-github-profile (objectif, pins, timeline, commits) | à venir |
+| 2 | analyze-github-profile (objectif, pins, timeline, commits) | fait |
 | 3 | score-profile (note /5 + tableau + correctifs) | à venir |
 | 4 | suggest-keywords + analyze-linkedin-profile | à venir |
 | 5 | routing (offres TPC / draft post Reddit) | à venir |
@@ -29,8 +29,18 @@ Principe technique : on orchestre, on ne réécrit pas. Les briques qui existent
 
 ## Usage
 
+Évaluer un README seul :
+
 ```
 /gh-readme owner/repo
 ```
 
 L'agent récupère le README via l'API GitHub, applique la grille `eval-readme`, et rend un verdict human/IA, des points forts, et des correctifs prêts à appliquer.
+
+Analyser un profil complet :
+
+```
+/gh-profile username
+```
+
+L'agent récupère repos, pinned, timeline et commits, détecte l'objectif principal de l'auteur, et rend une fiche profil avec les signaux par catégorie et les points d'attention.
