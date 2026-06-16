@@ -17,7 +17,7 @@ Principe technique : on orchestre, on ne réécrit pas. Les briques qui existent
 | 2 | analyze-github-profile (objectif, pins, timeline, commits) | fait |
 | 3 | score-profile (note /5 + tableau + correctifs) | fait |
 | 4a | suggest-keywords (findability, SEO, cross-linking) | fait |
-| 4b | analyze-linkedin-profile (entrée multimodale) | à venir |
+| 4b | analyze-linkedin-profile (entrée multimodale) | fait |
 | 5 | routing (offres TPC / draft post Reddit) | à venir |
 | 6 | packaging communautaire | à venir |
 
@@ -61,3 +61,11 @@ Optimiser la findability :
 ```
 
 Propose des descriptions et topics riches en mots-clés réels par repo, une bio optimisée, et les liens cross-platform manquants. Tout est copiable directement dans GitHub.
+
+Croiser ton LinkedIn avec ton GitHub :
+
+```
+/gh-linkedin username
+```
+
+Tu fournis ton propre profil (screenshots ou copier-coller), l'agent vérifie l'alignement avec ton GitHub et rend les correctifs. Zéro scraping, zéro stockage.
