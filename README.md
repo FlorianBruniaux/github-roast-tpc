@@ -78,6 +78,28 @@ Plan next steps:
 
 Branches on your objective. Job track: a fix checklist then a bridge to TPC offers. Outreach track: a Reddit or LinkedIn post draft ready to publish.
 
+## Full audit (one prompt)
+
+Run the whole pipeline in a single shot. Paste this into a Claude Code session that has the plugin loaded, replacing `USERNAME` and `OWNER/REPO`:
+
+```
+Run a complete github-roast-tpc audit for USERNAME (flagship: OWNER/REPO).
+
+Go through every stage in order and produce one consolidated report:
+1. analyze-github-profile — detect the main objective, then run the interactive
+   intake: reflect your hypothesis back to me and ask up to 3 targeted questions.
+   Wait for my answer before continuing.
+2. eval-readme on the flagship — human vs AI verdict, fixes.
+3. score-profile — /5 grade weighted by the confirmed objective, signal table.
+4. suggest-keywords — keyword-rich descriptions, topics, bio, llms.txt / SEO gaps.
+5. route-next-steps — next actions for the confirmed objective.
+
+Use the gh CLI as the data source. Cite the gh command behind every number.
+Stop at stage 1 for my confirmation, then run 2 to 5 without further questions.
+```
+
+The intake pause in stage 1 is intentional: the objective drives the weighting of every later stage. Everything after the confirmation runs end to end.
+
 ## Configuration
 
 The TPC job offers link (used by `/gh-next`, job track) is not hardcoded. Set it here or provide it at runtime:
