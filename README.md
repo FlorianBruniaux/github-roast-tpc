@@ -1,0 +1,36 @@
+# github-review
+
+Plugin Claude Code qui analyse un profil GitHub à travers l'intention de son auteur. Il évalue les README, détecte les marqueurs IA, lit les signaux recruteur, et conseille des keywords pour la findability. Issu du live TPC GitHub Review (ep. 2).
+
+## Philosophie
+
+On lit chaque repo via son objectif, pas via la qualité du code dans l'absolu. Quatre objectifs servent de grille : faire un gros projet, lever des fonds, se faire recruter, faire du business. Peu d'étoiles ne veut pas dire peu de valeur.
+
+Principe technique : on orchestre, on ne réécrit pas. Les briques qui existent déjà (organic score et géo côté StarMapper, détection anti-AI côté skills perso) sont appelées, pas dupliquées.
+
+## État
+
+| Phase | Contenu | Statut |
+|-------|---------|--------|
+| 0 | Scaffold plugin | fait |
+| 1 | eval-readme (skill + agent readme-critic) | fait |
+| 2 | analyze-github-profile (objectif, pins, timeline, commits) | à venir |
+| 3 | score-profile (note /5 + tableau + correctifs) | à venir |
+| 4 | suggest-keywords + analyze-linkedin-profile | à venir |
+| 5 | routing (offres TPC / draft post Reddit) | à venir |
+| 6 | packaging communautaire | à venir |
+
+## Composants Phase 0-1
+
+- `commands/gh-readme.md` : commande `/gh-readme <repo>` pour évaluer un README seul
+- `skills/eval-readme/SKILL.md` : critères et procédure d'évaluation
+- `agents/readme-critic.md` : agent qui récupère et critique le README
+- `signals.md` : grille de signaux partagée (source unique Florian + Gabriel)
+
+## Usage
+
+```
+/gh-readme owner/repo
+```
+
+L'agent récupère le README via l'API GitHub, applique la grille `eval-readme`, et rend un verdict human/IA, des points forts, et des correctifs prêts à appliquer.

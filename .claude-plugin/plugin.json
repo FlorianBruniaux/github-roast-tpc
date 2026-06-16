@@ -1,0 +1,8 @@
+{
+  "name": "github-review",
+  "version": "0.1.0",
+  "description": "Analyse de profil GitHub orientée objectif : eval README, détection marqueurs IA, signaux recruteur, conseils keywords et SEO. Né du live TPC GitHub Review.",
+  "author": {
+    "name": "Florian Bruniaux"
+  }
+}
