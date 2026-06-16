@@ -33,7 +33,7 @@ Langue (anglais attendu sur un repo vitrine), conventional commits, intention li
 
 ## Profil
 
-README de profil type CV, cohérence de DA et de naming entre repos (cas vu en live : trois variantes proches d'un même nom de projet entre repos, qui brouillent l'image). Liens cross-platform LinkedIn vers GitHub vers Medium pour la findability et le SEO.
+README de profil type CV, cohérence de DA et de naming entre repos (cas vu en live : trois variantes proches d'un même nom de projet entre repos, qui brouillent l'image). Liens cross-platform LinkedIn vers GitHub vers Medium pour la findability et le SEO. Vérifier aussi que les chiffres annoncés dans le profile README (stars, forks) collent au live : un compteur périmé qui sous-vend un flagship est un correctif gratuit, cas réel vu en audit, 2 000 annoncé contre 5 000 réels.
 
 ## Pinned repos
 
@@ -43,6 +43,14 @@ Les siens mis en avant vs une contribution à 1 commit sur un gros repo (cas vu 
 
 Commits le weekend = hobby et side projects vs uniquement professionnel. Spike à l'arrivée des assistants IA. Ni plus ni moins, ça dépend du poste recherché.
 
+## Docs LLM (discoverability AEO)
+
+De plus en plus de projets publient un fichier machine pour les moteurs de réponse et les assistants (ChatGPT, Perplexity, Claude). Vérifier à la racine la présence de `llms.txt`, `llms-full.txt` et leurs variantes (`llm.txt`, `.well-known/llms.txt`). Présent : bon signal, un dev qui pense à la façon dont les LLM citent son projet. Absent sur un projet outil : occasion ratée, correctif rapide à proposer. Format de référence sur llmstxt.org.
+
+## SEO et mots-clés
+
+Findability au sens recherche, pas seulement la recherche interne GitHub. Le nom du repo, la description, les topics et le titre du README contiennent-ils les termes qu'un humain ou un moteur taperait pour trouver ce projet. Vérifier l'alignement entre l'intention de recherche de la cible et le vocabulaire réel du repo. Une description vide, un titre non descriptif ou l'absence de topics sont des trous SEO directs. Le projet doit ressortir sur Google et les moteurs de réponse, pas juste dans GitHub.
+
 ## Signaux StarMapper (à appeler, pas recalculer)
 
-Organic score (forks, watchers, releases, contributeurs, ratio de comptes à 0 follower), distribution géographique, gros poissons (followers élevés parmi les stargazers). Rappel : l'organic score est gaté à 500 stars, en dessous il retourne "insufficient", lire les signaux bruts à la place.
+Organic score (forks, watchers, releases, contributeurs, ratio de comptes à 0 follower), distribution géographique, gros poissons (followers élevés parmi les stargazers). Rappel : l'organic score est gaté à 500 stars, en dessous il retourne "insufficient", lire les signaux bruts à la place. Réconcilier trois compteurs distincts plutôt que les juxtaposer : stars live GitHub, stars au moment du calcul du badge, et stargazers réellement scannés et géocodés. Expliquer l'écart au lecteur.

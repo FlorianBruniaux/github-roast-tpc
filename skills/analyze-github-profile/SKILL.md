@@ -11,6 +11,17 @@ Lit un profil GitHub à travers l'intention de son auteur, jamais la qualité du
 
 Un `username` GitHub. Optionnel : un ou deux repos phares déjà connus pour cibler l'analyse de commits.
 
+## Intake interactif (avant l'analyse complète)
+
+Ne pas dérouler tout l'audit d'un bloc. Faire d'abord une passe rapide (profil, repos phares, pinned), former une hypothèse, puis la refléter à l'utilisateur et attendre sa réponse avant de finaliser.
+
+1. Passe rapide : récupérer profil, top repos par étoiles, pinned.
+2. Refléter l'hypothèse en une fois, format court : "D'après ce que je vois, ton objectif principal est X (parce que A, B). Cible probable : Y. C'est bien ça ?" Poser au maximum trois questions ciblées qui changent vraiment l'analyse (objectif réel, audience visée, ce que tu attends de ce repo, contrainte particulière).
+3. Attendre la réponse. L'utilisateur confirme, corrige, ou complète.
+4. Recalibrer sur l'objectif confirmé, puis lancer l'analyse complète et le scoring.
+
+Si l'utilisateur a déjà donné l'objectif dans sa demande, sauter la question d'objectif et confirmer seulement les points manquants. Ne pas transformer l'intake en interrogatoire : trois questions utiles maximum, sinon on devine et on signale qu'on a deviné.
+
 ## Données à récupérer (via `gh`)
 
 Identité et présence :
@@ -49,6 +60,14 @@ gh api repos/{username}/{repo}/languages
 ```
 Les messages de commit donnent la langue, la convention (conventional commits ou non), l'intention lisible (feat, fix), et le `Co-Authored-By` éventuel.
 
+Docs LLM et SEO (pour chaque repo phare) :
+```
+gh api repos/{username}/{repo}/contents/llms.txt --jq '.name' 2>/dev/null
+gh api repos/{username}/{repo}/contents/llms-full.txt --jq '.name' 2>/dev/null
+gh api repos/{username}/{repo} --jq '{desc: .description, topics: .topics, homepage: .homepage}'
+```
+Présence d'un fichier LLM (`llms.txt`, `llms-full.txt`, variantes) et densité de mots-clés réels dans la description et les topics.
+
 ## Analyse
 
 Objectif détecté. Croiser les signaux de la grille `signals.md` pour proposer une intention principale parmi : faire un gros projet, lever des fonds, se faire recruter, faire du business. Toujours justifier par des faits observés, jamais affirmer sans preuve.
@@ -60,6 +79,12 @@ Pinned. Distinguer les repos dont l'auteur est vraiment le moteur de ceux où il
 Timeline. Rythme weekend vs uniquement pro, et tout spike marqué à l'arrivée des assistants IA. Ni bien ni mal en soi, ça dépend du poste visé.
 
 README de profil. Présent et type CV, ou absent. Un profil orienté recrutement sans README de profil rate une occasion.
+
+Cross-check des chiffres. Comparer les compteurs annoncés dans le profile README (stars, forks) avec le live gh, et montrer les deux. Un chiffre périmé qui sous-vend un flagship est un correctif gratuit.
+
+Docs LLM et SEO. Repérer la présence d'un fichier LLM (`llms.txt`, `llms-full.txt`) et juger la findability : description, topics et titre alignés sur ce qu'un humain ou un moteur cherche. Voir les sections dédiées de `signals.md`.
+
+Discipline de preuve. Pour chaque chiffre quantitatif avancé (contributions, commits, stars), citer la commande gh qui l'a produit.
 
 Signaux StarMapper (optionnel, ne pas recalculer). Si une intégration StarMapper est disponible, récupérer organic score, distribution géographique et gros poissons parmi les stargazers. Sinon, lire les signaux bruts gh (forks, watchers, releases). Rappel : l'organic score est gaté à 500 étoiles, en dessous il renvoie "insufficient".
 

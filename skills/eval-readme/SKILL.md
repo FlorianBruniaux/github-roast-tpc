@@ -29,7 +29,7 @@ Nuance : un fichier `llms.txt` ou un README explicitement destiné à être ing�
 
 ### Grille 3 : essentiels
 
-Licence présente. Le quoi et le pourquoi en haut. Installation. Usage avec exemples. Mention ou badge "en pause" si la maintenance est arrêtée, pour éviter l'impression d'abandon sur un repo vitrine.
+Licence présente. Le quoi et le pourquoi en haut. Installation. Usage avec exemples. Mention ou badge "en pause" si la maintenance est arrêtée, pour éviter l'impression d'abandon sur un repo vitrine. Docs LLM : présence d'un `llms.txt` ou `llms-full.txt` à la racine, signal de discoverability moderne (voir `signals.md`). Absent sur un projet outil, c'est un correctif rapide à proposer.
 
 ## Sortie
 

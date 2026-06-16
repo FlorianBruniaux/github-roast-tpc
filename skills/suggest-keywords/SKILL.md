@@ -21,6 +21,7 @@ gh api "users/{username}/repos?per_page=100" --paginate \
 2. Pour chaque repo phare, proposer une description courte et dense en mots-clés réels (ce que quelqu'un taperait pour trouver ce projet), et une liste de topics GitHub pertinents.
 3. Proposer une bio de profil optimisée : rôle, stack, et un ou deux mots-clés de niche qui te différencient.
 4. Vérifier le cross-platform linking : le profil pointe-t-il vers LinkedIn, et inversement, et vers un blog ou Medium si présent. Une chaîne de liens cohérente renforce le SEO et la findability.
+5. Vérifier la présence d'un fichier LLM (`llms.txt`, `llms-full.txt`). Absent sur un projet outil, proposer de l'ajouter : c'est de l'AEO, les moteurs de réponse et les assistants s'en servent pour citer le projet. Format sur llmstxt.org.
 
 ## Règles
 
