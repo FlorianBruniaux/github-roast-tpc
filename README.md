@@ -134,10 +134,23 @@ Stop at stage 1 for my confirmation, then run 2 to 5 without further questions.
 
 The intake pause in stage 1 is intentional: the objective drives the weighting of every later stage. Everything after the confirmation runs end to end.
 
-## Configuration
+## Setup
 
-The TPC job offers link (used by `/gh-next`, job track) is not hardcoded. Set it here or provide it at runtime:
+Once the plugin is installed, three things to configure. Only the first is mandatory.
+
+1. GitHub CLI. Authenticate `gh` so the skills can read profiles, repos, timelines, commits, issues and PRs:
+
+```
+gh auth login
+gh auth status   # confirm you are logged in
+```
+
+A token with the default scopes is enough for public data. Without auth, the GitHub API caps at 60 requests/hour and most calls fail.
+
+2. TPC job offers link, used by `/gh-next` on the job track. It is not hardcoded. Provide it at runtime when the command asks, or set it here once:
 
 ```
 TPC_OFFERS_URL = (to fill in)
 ```
+
+3. StarMapper integration (optional). It powers the organic score and stargazer geography. No environment variable and no local server are needed: the skills call the public StarMapper HTTP API (`https://starmapper.bruniaux.com/api/mcp/...`) when a repo has been scanned, and fall back to raw `gh` signals (forks, watchers, releases) otherwise. To use a self-hosted StarMapper, give its base URL to the skill when prompted. Reminder: the organic score is gated at 500 stars, below which it returns `insufficient`.
