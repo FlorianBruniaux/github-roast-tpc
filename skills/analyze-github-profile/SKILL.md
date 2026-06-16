@@ -30,6 +30,12 @@ gh api users/{username}
 ```
 Récupère name, bio, blog, company, location, hireable, followers, public_repos, created_at.
 
+Liens et comptes sociaux du profil :
+```
+gh api users/{username}/social_accounts --jq '.[] | {provider, url}'
+```
+Plus le champ `blog` de l'appel précédent (site web). Inventorier ce qui est présent : bio, site web, LinkedIn, email, autres. Juger : la bio décrit-elle clairement le positionnement, le site web et le LinkedIn sont-ils renseignés et cohérents avec l'objectif, les liens forment-ils une chaîne (GitHub vers site vers LinkedIn). Un profil orienté diffusion ou recrutement sans site ni LinkedIn renseignés rate une porte d'entrée. Signaler tout lien manquant ou incohérent.
+
 README de profil (peut renvoyer 404, c'est une information en soi) :
 ```
 gh api repos/{username}/{username}/readme --jq .content 2>/dev/null | base64 -d
