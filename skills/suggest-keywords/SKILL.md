@@ -29,6 +29,7 @@ gh api "users/{username}/repos?per_page=100" --paginate \
 - Coller au vocabulaire que la cible utilise vraiment (un recruteur cherche "React Native", pas "application mobile cross-platform moderne").
 - Topics GitHub : entre 5 et 10 par repo, du général au spécifique.
 - Pas de promesse marketing, des termes techniques précis.
+- Discipline de preuve sur ce qu'on recommande de publier. Tout chiffre (étoiles cumulées, speedup, taille de binaire, downloads) et tout intitulé de poste ou d'employeur proposé dans une bio ou une description doit être sourcé par une commande gh ou par le repo, jamais inventé ni agrégé à la louche. Un agrégat de stars se calcule en additionnant des compteurs vérifiés, et on montre le détail. Un chiffre non vérifiable se marque `[à vérifier]` plutôt que d'être avancé. Ne jamais faire commettre à l'utilisateur le claim gonflé que l'audit reproche ailleurs.
 
 ## Sortie
 
