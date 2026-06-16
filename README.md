@@ -16,7 +16,8 @@ Principe technique : on orchestre, on ne réécrit pas. Les briques qui existent
 | 1 | eval-readme (skill + agent readme-critic) | fait |
 | 2 | analyze-github-profile (objectif, pins, timeline, commits) | fait |
 | 3 | score-profile (note /5 + tableau + correctifs) | fait |
-| 4 | suggest-keywords + analyze-linkedin-profile | à venir |
+| 4a | suggest-keywords (findability, SEO, cross-linking) | fait |
+| 4b | analyze-linkedin-profile (entrée multimodale) | à venir |
 | 5 | routing (offres TPC / draft post Reddit) | à venir |
 | 6 | packaging communautaire | à venir |
 
@@ -52,3 +53,11 @@ Noter un profil /5 avec correctifs :
 ```
 
 Enchaîne analyse de profil, éval du README phare, puis note /5 pondérée par l'objectif détecté, tableau de signaux, et correctifs triés par retour sur effort.
+
+Optimiser la findability :
+
+```
+/gh-keywords username
+```
+
+Propose des descriptions et topics riches en mots-clés réels par repo, une bio optimisée, et les liens cross-platform manquants. Tout est copiable directement dans GitHub.
