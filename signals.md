@@ -31,7 +31,7 @@ IA non assumée : em-dash en pagaille, pavés uniformes, tournures LLM, emojis e
 
 IA assumée et OK : fichier `llms.txt` ou README machine destiné à être ingéré par un LLM. Là le contenu généré est légitime.
 
-Essentiels : licence présente, quoi/pourquoi, installation, usage. Badge ou mention "en pause" si la maintenance est arrêtée (évite l'impression d'abandon).
+Essentiels : licence présente, quoi/pourquoi, installation, usage. Badge ou mention "en pause" si la maintenance est arrêtée (évite l'impression d'abandon). Le README n'est pas un changelog : l'historique de versions va dans CHANGELOG.md ou les releases, pas en haut du README où il noie le quoi/pourquoi. Métadonnées du repo : description GitHub renseignée et topics présents, sinon le repo est invisible à la recherche et au premier coup d'œil.
 
 ## Marqueurs IA (réutilise le skill anti-AI existant)
 

@@ -29,7 +29,9 @@ Nuance : un fichier `llms.txt` ou un README explicitement destiné à être ing�
 
 ### Grille 3 : essentiels
 
-Licence présente. Le quoi et le pourquoi en haut. Installation. Usage avec exemples. Mention ou badge "en pause" si la maintenance est arrêtée, pour éviter l'impression d'abandon sur un repo vitrine. Docs LLM : présence d'un `llms.txt` ou `llms-full.txt` à la racine, signal de discoverability moderne (voir `signals.md`). Absent sur un projet outil, c'est un correctif rapide à proposer.
+Licence présente. Le quoi et le pourquoi en haut. Installation. Usage avec exemples. Le README n'est pas un changelog : un long journal de versions ou un historique de changements en haut noie le quoi et le pourquoi, et fait fuir le lecteur pressé. L'historique va dans `CHANGELOG.md` ou les releases GitHub, pas dans le README.
+
+Métadonnées du repo. La description GitHub du repo est renseignée et les topics (tags) sont présents. Un repo sans description ni topics est invisible à la recherche et au premier coup d'œil, c'est un correctif de deux minutes. Vérifier via `gh api repos/{owner}/{repo} --jq '{desc: .description, topics: .topics}'`. Mention ou badge "en pause" si la maintenance est arrêtée, pour éviter l'impression d'abandon sur un repo vitrine. Docs LLM : présence d'un `llms.txt` ou `llms-full.txt` à la racine, signal de discoverability moderne (voir `signals.md`). Absent sur un projet outil, c'est un correctif rapide à proposer.
 
 Cohérence des chiffres. Un même chiffre répété (nombre de fonctionnalités, étoiles dans une table comparative, version) doit être identique partout : header, tableaux, roadmap, description GitHub. Si les sources divergent, ne pas élire une valeur comme vraie : signaler la divergence, dire où trancher (le code, le compteur live), puis aligner. Voir la discipline de preuve dans `signals.md`.
 
