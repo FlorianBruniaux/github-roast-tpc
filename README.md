@@ -18,7 +18,7 @@ Principe technique : on orchestre, on ne réécrit pas. Les briques qui existent
 | 3 | score-profile (note /5 + tableau + correctifs) | fait |
 | 4a | suggest-keywords (findability, SEO, cross-linking) | fait |
 | 4b | analyze-linkedin-profile (entrée multimodale) | fait |
-| 5 | routing (offres TPC / draft post Reddit) | à venir |
+| 5 | route-next-steps (offres TPC / draft post Reddit) | fait |
 | 6 | packaging communautaire | à venir |
 
 ## Composants Phase 0-1
@@ -69,3 +69,19 @@ Croiser ton LinkedIn avec ton GitHub :
 ```
 
 Tu fournis ton propre profil (screenshots ou copier-coller), l'agent vérifie l'alignement avec ton GitHub et rend les correctifs. Zéro scraping, zéro stockage.
+
+Passer à l'action :
+
+```
+/gh-next username
+```
+
+Branche sur ton objectif. Piste taf : checklist de correctifs puis pont vers les offres TPC. Piste diffusion : draft de post Reddit ou LinkedIn prêt à poster.
+
+## Configuration
+
+Le lien des offres d'emploi TPC (utilisé par `/gh-next`, piste taf) n'est pas codé en dur. Renseigne-le ici ou fournis-le au moment de l'usage :
+
+```
+TPC_OFFRES_URL = (à renseigner)
+```
