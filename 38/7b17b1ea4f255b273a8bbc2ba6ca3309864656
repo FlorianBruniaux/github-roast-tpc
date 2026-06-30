@@ -1,0 +1,19 @@
+skills/score-profile/SKILL.md
+  s_5079ebb39dfe2e::t_f74daa5dcb16da 45-60
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.3",
+  "base_commit_sha": "387b17b1ea4f255b273a8bbc2ba6ca3309864656",
+  "prompts": {},
+  "sessions": {
+    "s_5079ebb39dfe2e": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "60fd27b5-cc8f-4379-95df-16c43c78e18b",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    }
+  }
+}
