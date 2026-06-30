@@ -1,0 +1,38 @@
+scoring-card.html
+  s_5079ebb39dfe2e::t_083979d46b83b7 148-150
+  s_5079ebb39dfe2e::t_38f37425f3c69f 1-19,22-24,33,36,41-85,87,95-97,108,117-118,131-134,139,141-143,145,151-153,155-166,168-176,183-185,187-189,242-244
+  s_5079ebb39dfe2e::t_995d06b9e2b5a1 20-21,25-32,34-35,37-40,86,88-94,98-107,109-116,119-130,135-138,140,144,146-147,154,167,177-182,186,190-241
+README.md
+  s_5079ebb39dfe2e::t_533cbf3483d7a5 83,89
+  s_5079ebb39dfe2e::t_b95c6006b6129a 123,126-129
+  s_5079ebb39dfe2e::t_92e3f044669302 18
+CHANGELOG.md
+  s_5079ebb39dfe2e::t_b1683af0b7e18f 1-13
+commands/gh-score.md
+  s_5079ebb39dfe2e::t_2627d0e9dcdf35 2
+  s_5079ebb39dfe2e::t_db07876a6b099b 11
+signals.md
+  s_5079ebb39dfe2e::t_95dba2e97c006f 75-137
+ROADMAP.md
+  s_5079ebb39dfe2e::t_fe8e463f4533ec 36-37,40
+skills/score-profile/SKILL.md
+  s_5079ebb39dfe2e::t_c1a2ed9e78975b 3
+  s_5079ebb39dfe2e::t_fda76970c02808 17-19,21
+  s_5079ebb39dfe2e::t_e655ec60b519a2 40,42-43,45-50
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.3",
+  "base_commit_sha": "998d44ff6f6906c92da065dba62d5baac9ee2cc7",
+  "prompts": {},
+  "sessions": {
+    "s_5079ebb39dfe2e": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "60fd27b5-cc8f-4379-95df-16c43c78e18b",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Florian BRUNIAUX <florian@bruniaux.com>"
+    }
+  }
+}
