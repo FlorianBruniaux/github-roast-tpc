@@ -42,7 +42,22 @@ Quatre couches, dans cet ordre.
 1. **Note /100** globale (`score_100: N`), avec une phrase qui rappelle l'objectif retenu et pourquoi la note est calibrée dessus.
 2. **Tableau de signaux** : chaque catégorie en vert, orange ou rouge, avec la note partielle et une raison courte et factuelle.
 3. **Correctifs prêts à appliquer**, triés par retour sur effort. Chacun est un prompt ou une action concrète, par exemple : nettoyer les em-dash du README, ajouter descriptions et topics aux repos, faire remonter les bons pins, ajouter un badge "en pause" sur un repo vitrine non maintenu, créer un README de profil type CV, aligner les liens LinkedIn et GitHub.
-4. **Carte de résultat partageable.** Copier le fichier `scoring-card.html` (à la racine du plugin) vers `scoring-card-<handle>.html` dans le répertoire courant, en substituant dans le bloc JS les valeurs `const HANDLE = "<handle>"` et `const SCORE = <score_100>`. Afficher ensuite :
+4. **Carte de résultat partageable.** Générer la carte en trois étapes :
+
+   a. Télécharger l'avatar et l'encoder en base64 :
+   ```bash
+   curl -fsSL "https://github.com/<handle>.png?size=200" -o /tmp/<handle>-avatar.jpg
+   B64=$(base64 -i /tmp/<handle>-avatar.jpg | tr -d '\n')
+   ```
+
+   b. Copier `scoring-card.html` (racine du plugin) vers `scoring-card-<handle>.html` dans le répertoire courant, puis effectuer trois substitutions dans le bloc JS :
+   - `const HANDLE = 'torvalds'` → `const HANDLE = "<handle>"`
+   - `const SCORE = 82` → `const SCORE = <score_100>`
+   - `document.getElementById('avatar').src = 'https://github.com/' + HANDLE + '.png'` → `document.getElementById('avatar').src = 'data:image/jpeg;base64,' + B64` (avec la vraie valeur du B64 inline, pas la variable shell)
+
+   L'embed base64 est obligatoire : la carte s'ouvre en `file://` et le navigateur bloque les requêtes externes dans ce contexte.
+
+   c. Afficher le chemin :
 
 ```
 Ta carte de score : ./scoring-card-<handle>.html
