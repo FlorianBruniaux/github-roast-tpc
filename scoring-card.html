@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Score Card — Scoring GitHub TPC</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --indigo-100:#C2C0FF; --indigo-200:#726CFD; --indigo-250:#3932FF;
+    --indigo-300:#251DE7; --indigo-450:#030223;
+    --green-200:#24F996; --green-300:#0AC26C; --amber:#F5A623; --red-250:#F92441;
+    --black:#080808; --white:#FFFFFF;
+  }
+  *{margin:0; padding:0; box-sizing:border-box;}
+  body{
+    font-family:'Bricolage Grotesque',sans-serif;
+    background:#1a1a1a; overflow:hidden;
+    display:flex; align-items:center; justify-content:center;
+    min-height:100vh; padding:40px;
+  }
+
+  /* Wrapper dont la taille CSS suit --s : évite l'overflow du scale flottant */
+  .card-wrapper{
+    position:relative;
+    width:calc(1080px * var(--s, 0.55));
+    height:calc(1080px * var(--s, 0.55));
+  }
+
+  /* Carte native 1080x1080, scale depuis le coin supérieur gauche */
+  .card{
+    position:absolute; top:0; left:0;
+    width:1080px; height:1080px; overflow:hidden;
+    background:var(--black); color:var(--white);
+    transform:scale(var(--s, 0.55));
+    transform-origin:top left;
+    /* Masquée jusqu'à ce que les fonts soient prêtes */
+    visibility:hidden;
+  }
+  .grid-bg{
+    position:absolute; inset:0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.05) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(255,255,255,0.05) 1px,transparent 1px);
+    background-size:54px 54px;
+  }
+  .blur-glow{
+    position:absolute; inset:0;
+    background:radial-gradient(ellipse at 78% 82%,rgba(37,29,231,0.5) 0%,rgba(3,2,35,0) 58%);
+  }
+  .inner{position:relative; z-index:1; height:100%; padding:80px; display:flex; flex-direction:column;}
+
+  .top{display:flex; align-items:center; justify-content:space-between;}
+  .logo{font-size:42px; font-weight:800; letter-spacing:-0.02em;}
+  .badge{
+    font-size:21px; font-weight:600; color:var(--indigo-100);
+    border:1px solid rgba(194,192,255,0.35); border-radius:100px; padding:12px 26px;
+  }
+
+  .mid{flex:1; display:flex; flex-direction:column; justify-content:flex-start; padding-top:40px;}
+  .identity{display:flex; align-items:center; gap:36px; margin-bottom:56px;}
+  .avatar{
+    width:170px; height:170px; border-radius:50%; flex-shrink:0;
+    border:4px solid var(--indigo-250); object-fit:cover;
+    background:#222;
+  }
+  .who .handle-label{font-size:24px; color:rgba(255,255,255,0.5); margin-bottom:6px;}
+  .who .handle{font-size:52px; font-weight:800; letter-spacing:-0.02em; line-height:1.05;}
+
+  .score-row{display:flex; align-items:center; justify-content:center;}
+  .ring-wrap{position:relative; width:320px; height:320px; flex-shrink:0;}
+  .ring-wrap .num{
+    position:absolute; inset:0; display:flex; flex-direction:column;
+    align-items:center; justify-content:center;
+  }
+  .ring-wrap .num .big{font-size:130px; font-weight:800; line-height:1; letter-spacing:-0.04em;}
+  .ring-wrap .num .den{font-size:36px; color:rgba(255,255,255,0.5); margin-top:6px;}
+
+  .bottom{display:flex; flex-direction:column; gap:14px; padding-top:50px; border-top:1px solid rgba(255,255,255,0.12);}
+  .bottom .tool{font-size:30px; font-weight:700; letter-spacing:-0.01em; line-height:1.25; max-width:780px;}
+  .bottom .tool .accent{color:var(--indigo-100);}
+  .bottom .collab{font-size:21px; color:rgba(255,255,255,0.45); white-space:nowrap;}
+
+  /* Éléments hors capture (non inclus dans le clone PNG) */
+  .hint{position:fixed; bottom:16px; left:50%; transform:translateX(-50%); color:#888; font-size:13px; font-family:sans-serif;}
+  #dlBtn{
+    position:fixed; bottom:48px; left:50%; transform:translateX(-50%);
+    background:#251DE7; color:#fff; border:none; border-radius:100px;
+    padding:12px 28px; font-size:15px; font-family:inherit; cursor:pointer;
+    z-index:100;
+  }
+  #dlBtn:disabled{opacity:0.6; cursor:default;}
+</style>
+</head>
+<body>
+  <div class="card-wrapper" id="cardWrapper">
+    <div class="card" id="card">
+      <div class="grid-bg"></div>
+      <div class="blur-glow"></div>
+      <div class="inner">
+
+        <div class="top">
+          <div class="logo">TPC.</div>
+          <div class="badge">Scoring GitHub</div>
+        </div>
+
+        <div class="mid">
+          <div class="identity">
+            <!-- crossorigin="anonymous" requis pour dom-to-image (avatar github = ACAO:*) -->
+            <img class="avatar" id="avatar" src="" alt="" crossorigin="anonymous" />
+            <div class="who">
+              <div class="handle-label">github.com/</div>
+              <div class="handle" id="handleEl"></div>
+            </div>
+          </div>
+
+          <div class="score-row">
+            <div class="ring-wrap">
+              <svg width="320" height="320" viewBox="0 0 300 300">
+                <circle cx="150" cy="150" r="140" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="22"/>
+                <circle id="ring" cx="150" cy="150" r="140" fill="none" stroke-width="22"
+                        stroke-linecap="round" stroke-dasharray="879.6"
+                        transform="rotate(-90 150 150)"/>
+              </svg>
+              <div class="num">
+                <span class="big" id="scoreVal"></span>
+                <span class="den">/ 100</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bottom">
+          <div class="tool">Ton GitHub attire-t-il les tops entreprises ? Fais le test maintenant avec <span class="accent">TPC</span></div>
+          <div class="collab">En collaboration avec Florian Bruniaux</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <button id="dlBtn">Télécharger l'image</button>
+  <div class="hint">Aperçu réduit — la carte fait 1080×1080 px en réalité.</div>
+
+  <!-- dom-to-image-more : meilleur que html2canvas sur SVG inline -->
+  <script src="https://cdn.jsdelivr.net/npm/dom-to-image-more@2.8.0/dist/dom-to-image-more.min.js"
+          integrity="sha384-FTL93Va9QVfcQbyOWG7sSYg7Lowuz4gX/XsCBad0wdOj8Eqf7atgRfbZkk8tIiu9"
+          crossorigin="anonymous"></script>
+
+  <script>
+    // Lecture des paramètres URL : ?handle=johndoe&score=78
+    // Fallback sur les valeurs ci-dessous si absents (utile pour les copies générées par le skill).
+    const params  = new URLSearchParams(window.location.search);
+    const HANDLE  = params.get('handle') || 'torvalds';
+    const SCORE   = parseInt(params.get('score'), 10) || 82;
+
+    function scoreColor(s){
+      if (s >= 75) return getComputedStyle(document.documentElement).getPropertyValue('--green-200').trim();
+      if (s >= 45) return getComputedStyle(document.documentElement).getPropertyValue('--amber').trim();
+      return getComputedStyle(document.documentElement).getPropertyValue('--red-250').trim();
+    }
+
+    function applyScore(){
+      const s    = Math.max(0, Math.min(100, SCORE));
+      const CIRC = 879.6; // 2π × r=140
+      const ring = document.getElementById('ring');
+      ring.style.stroke = scoreColor(s);
+      ring.setAttribute('stroke-dashoffset', (CIRC * (1 - s / 100)).toFixed(1));
+      document.getElementById('scoreVal').textContent  = s;
+      document.getElementById('handleEl').textContent  = HANDLE;
+      document.getElementById('avatar').src            = 'https://github.com/' + HANDLE + '.png';
+    }
+    applyScore();
+
+    // Masquer la carte jusqu'au chargement complet des fonts (évite le FOUT)
+    document.fonts.ready.then(() => {
+      document.getElementById('card').style.visibility = 'visible';
+    });
+
+    // Adapter la taille visuelle à la fenêtre (la carte reste 1080px réels)
+    function fit(){
+      const pad = 80;
+      const s = Math.min((window.innerWidth - pad) / 1080, (window.innerHeight - pad) / 1080, 1);
+      document.getElementById('cardWrapper').style.setProperty('--s', s);
+    }
+    window.addEventListener('resize', fit);
+    fit();
+
+    // Bouton téléchargement PNG
+    document.getElementById('dlBtn').addEventListener('click', async () => {
+      const btn = document.getElementById('dlBtn');
+      btn.textContent = 'Génération…';
+      btn.disabled = true;
+
+      // Attendre les fonts avant la capture
+      await document.fonts.ready;
+
+      const src = document.getElementById('card');
+
+      // Cloner la carte sans transform pour capturer à 1080×1080 réels
+      const clone = src.cloneNode(true);
+      clone.style.cssText = src.style.cssText;
+      clone.style.transform = 'none';
+      clone.style.visibility = 'visible';
+      clone.style.position = 'fixed';
+      clone.style.top = '-9999px';
+      clone.style.left = '-9999px';
+      clone.style.width = '1080px';
+      clone.style.height = '1080px';
+
+      // Recopier les styles calculés par JS sur le ring SVG (stroke + dashoffset)
+      const srcRing   = src.querySelector('#ring');
+      const cloneRing = clone.querySelector('#ring');
+      cloneRing.style.stroke = srcRing.style.stroke;
+      cloneRing.setAttribute('stroke-dashoffset', srcRing.getAttribute('stroke-dashoffset'));
+
+      document.body.appendChild(clone);
+
+      try {
+        const blob = await domtoimage.toBlob(clone, {
+          width: 1080,
+          height: 1080,
+          style: { transform: 'none' }
+        });
+        const url = URL.createObjectURL(blob);
+        const a   = document.createElement('a');
+        a.href     = url;
+        a.download = 'github-score-' + HANDLE + '-' + SCORE + '.png';
+        a.click();
+        setTimeout(() => URL.revokeObjectURL(url), 5000);
+      } catch (err) {
+        console.error('Capture échouée :', err);
+        alert('La capture a échoué. Vérifiez la console.');
+      } finally {
+        document.body.removeChild(clone);
+        btn.textContent = "Télécharger l'image";
+        btn.disabled    = false;
+      }
+    });
+  </script>
+</body>
+</html>

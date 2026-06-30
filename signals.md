@@ -72,3 +72,66 @@ Findability au sens recherche, pas seulement la recherche interne GitHub. Le nom
 ## Signaux StarMapper (à appeler, pas recalculer)
 
 Organic score (forks, watchers, releases, contributeurs, ratio de comptes à 0 follower), distribution géographique, gros poissons (followers élevés parmi les stargazers). Rappel : l'organic score est gaté à 500 stars, en dessous il retourne "insufficient", lire les signaux bruts à la place. Réconcilier trois compteurs distincts plutôt que les juxtaposer : stars live GitHub, stars au moment du calcul du badge, et stargazers réellement scannés et géocodés. Expliquer l'écart au lecteur.
+
+## Pondération /100 par objectif
+
+Source unique pour le skill `score-profile`. Chaque catégorie est notée de 0 à 100, la note finale = Σ(score_catégorie × poids), arrondie à l'entier.
+
+### Se faire recruter
+
+| Catégorie | Poids |
+|-----------|-------|
+| README de profil | 0,22 |
+| Findability | 0,20 |
+| Repos phares | 0,15 |
+| Cohérence DA/naming | 0,12 |
+| Commits | 0,10 |
+| Pinned | 0,10 |
+| Timeline | 0,08 |
+| StarMapper | 0,03 |
+| **Total** | **1,00** |
+
+### Lever des fonds
+
+| Catégorie | Poids |
+|-----------|-------|
+| Repos phares | 0,25 |
+| StarMapper | 0,20 |
+| Findability | 0,20 |
+| README | 0,18 |
+| Commits | 0,08 |
+| Cohérence DA/naming | 0,05 |
+| Pinned | 0,04 |
+| **Total** | **1,00** |
+
+### Faire un gros projet
+
+| Catégorie | Poids |
+|-----------|-------|
+| Repos phares | 0,28 |
+| Commits | 0,18 |
+| README | 0,18 |
+| Timeline | 0,14 |
+| Findability | 0,10 |
+| Cohérence DA/naming | 0,07 |
+| Pinned | 0,05 |
+| **Total** | **1,00** |
+
+StarMapper non inclus pour cet objectif (traction externe non prioritaire sur la profondeur technique).
+
+### Faire du business
+
+| Catégorie | Poids |
+|-----------|-------|
+| Repos phares | 0,22 |
+| StarMapper | 0,20 |
+| Findability | 0,20 |
+| README | 0,15 |
+| Commits | 0,10 |
+| Cohérence DA/naming | 0,08 |
+| Pinned | 0,05 |
+| **Total** | **1,00** |
+
+### Règle StarMapper absent
+
+Quand StarMapper est indisponible (repo sous 500 stars ou non scanné), multiplier le poids de chaque catégorie restante par `1 / (1 - poids_StarMapper)` pour renormaliser à 1,0. Exemples : pour "lever des fonds" (StarMapper 0,20), multiplier par 1,25 ; pour "faire du business" (StarMapper 0,20), multiplier par 1,25 ; pour "se faire recruter" (StarMapper 0,03), multiplier par 1/0,97 ≈ 1,031. Appliquer l'arrondi à l'entier sur la note finale uniquement, pas sur les poids intermédiaires. Mentionner la renormalisation dans la sortie ("StarMapper indisponible, poids redistribués").

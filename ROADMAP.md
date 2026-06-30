@@ -33,10 +33,11 @@ Skill `score-profile`. Pas d'agent dédié, c'est de la synthèse (envisager opu
 
 Entrée : sorties Phase 1 (README) + Phase 2 (profil) + signaux StarMapper.
 
-Sortie en trois couches :
-1. Note /5 globale, orientée objectif (la note d'un repo "se faire recruter" ne se juge pas comme un "lever des fonds").
+Sortie en quatre couches :
+1. Note /100 globale, orientée objectif (la note d'un repo "se faire recruter" ne se juge pas comme un "lever des fonds"). Les poids par catégorie et par objectif sont dans `signals.md`.
 2. Tableau de signaux vert/orange/rouge par catégorie.
 3. Prompts correctifs prêts à appliquer (nettoyer em-dash, ajouter descriptions+keywords, faire remonter les bons pins, badge "en pause", aligner LinkedIn et GitHub).
+4. Carte de résultat partageable : fichier HTML généré localement, prêt à ouvrir dans un navigateur pour screenshot ou téléchargement PNG direct.
 
 ---
 

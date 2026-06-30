@@ -15,7 +15,7 @@ Technical principle: orchestrate, do not rewrite. Existing building blocks (orga
 | 0 | Plugin scaffold | done |
 | 1 | eval-readme (skill + readme-critic agent) | done |
 | 2 | analyze-github-profile (objective, pins, timeline, commits) | done |
-| 3 | score-profile (/5 grade + table + fixes) | done |
+| 3 | score-profile (/100 grade + table + fixes + score card) | done |
 | 4a | suggest-keywords (findability, SEO, cross-linking) | done |
 | 4b | analyze-linkedin-profile (multimodal input) | done |
 | 5 | route-next-steps (TPC offers / Reddit post draft) | done |
@@ -80,13 +80,13 @@ Analyze a full profile:
 
 The agent fetches repos, pinned items, timeline and commits, detects the author's main objective, and returns a profile sheet with signals by category and points of attention.
 
-Score a profile out of 5 with fixes:
+Score a profile out of 100 with fixes and a shareable card:
 
 ```
 /gh-score username
 ```
 
-Chains profile analysis, flagship README review, then a /5 grade weighted by the detected objective, a signal table, and fixes sorted by return on effort.
+Chains profile analysis, flagship README review, then a /100 grade weighted by the detected objective, a signal table, fixes sorted by return on effort, and a score card ready to screenshot or download as PNG.
 
 Optimize findability:
 
@@ -120,13 +120,13 @@ Run the whole pipeline in a single shot. Paste this into a Claude Code session t
 Run a complete github-roast-tpc audit for USERNAME (flagship: OWNER/REPO).
 
 Go through every stage in order and produce one consolidated report:
-1. analyze-github-profile — detect the main objective, then run the interactive
+1. analyze-github-profile: detect the main objective, then run the interactive
    intake: reflect your hypothesis back to me and ask up to 3 targeted questions.
    Wait for my answer before continuing.
-2. eval-readme on the flagship — human vs AI verdict, fixes.
-3. score-profile — /5 grade weighted by the confirmed objective, signal table.
-4. suggest-keywords — keyword-rich descriptions, topics, bio, llms.txt / SEO gaps.
-5. route-next-steps — next actions for the confirmed objective.
+2. eval-readme on the flagship: human vs AI verdict, fixes.
+3. score-profile: /100 grade weighted by the confirmed objective, signal table, and score card generated locally.
+4. suggest-keywords: keyword-rich descriptions, topics, bio, llms.txt / SEO gaps.
+5. route-next-steps: next actions for the confirmed objective.
 
 Use the gh CLI as the data source. Cite the gh command behind every number.
 Stop at stage 1 for my confirmation, then run 2 to 5 without further questions.

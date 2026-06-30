@@ -1,6 +1,6 @@
 ---
 name: score-profile
-description: Use when turning a GitHub profile analysis into an actionable score. Produces a /5 grade weighted by the author's detected objective, a green/orange/red signal table, and ready-to-paste corrective prompts. Triggers on "note ce profil", "score my github", "is my profile good for getting hired".
+description: Use when turning a GitHub profile analysis into an actionable score. Produces a /100 grade weighted by the author's detected objective, a green/orange/red signal table, ready-to-paste corrective prompts, and a shareable score card. Triggers on "note ce profil", "score my github", "is my profile good for getting hired".
 ---
 
 # score-profile
@@ -14,10 +14,11 @@ La fiche profil produite par `analyze-github-profile`, plus si disponible l'éva
 ## Procédure
 
 1. Confirmer l'objectif principal détecté. Toute la notation en découle.
-2. Noter chaque catégorie de la grille ci-dessous, pondérée par l'objectif.
-3. Agréger en une note /5 et lister les correctifs, du plus rentable au moins rentable.
+2. Noter chaque catégorie de la grille ci-dessous, sur 100, pondérée par les poids définis dans `signals.md` (section « Pondération /100 par objectif »). Si StarMapper est indisponible, appliquer la règle de renormalisation décrite dans `signals.md`.
+3. Agréger en une note /100 (Σ score_catégorie × poids, arrondie à l'entier) et lister les correctifs, du plus rentable au moins rentable.
+4. Générer la carte de résultat (voir section Sortie).
 
-Montrer le calcul de la note, pas seulement le résultat. Afficher le poids de chaque catégorie et l'arithmétique (par exemple 4×0,4 + 3×0,3 + 3×0,2 + 4×0,1 = 3,5). Une note sans son détail n'est pas auditable. Tout chiffre repris dans la notation suit la discipline de preuve de `signals.md` : sourcé par une commande gh, ou marqué `[à vérifier]`.
+Montrer le calcul de la note, pas seulement le résultat. Afficher le poids de chaque catégorie et l'arithmétique (par exemple `README 78×0,22 + findability 80×0,20 + repos phares 65×0,15 + … = 72/100`). Une note sans son détail n'est pas auditable. Tout chiffre repris dans la notation suit la discipline de preuve de `signals.md` : sourcé par une commande gh, ou marqué `[à vérifier]`.
 
 ## Pondération par objectif
 
@@ -36,10 +37,16 @@ README (qualité de communication, via `eval-readme`). Repos phares (profondeur,
 
 ## Sortie
 
-Trois couches, dans cet ordre.
+Quatre couches, dans cet ordre.
 
-1. **Note /5** globale, avec une phrase qui rappelle l'objectif retenu et pourquoi la note est calibrée dessus.
-2. **Tableau de signaux** : chaque catégorie en vert, orange ou rouge, avec une raison courte et factuelle.
+1. **Note /100** globale (`score_100: N`), avec une phrase qui rappelle l'objectif retenu et pourquoi la note est calibrée dessus.
+2. **Tableau de signaux** : chaque catégorie en vert, orange ou rouge, avec la note partielle et une raison courte et factuelle.
 3. **Correctifs prêts à appliquer**, triés par retour sur effort. Chacun est un prompt ou une action concrète, par exemple : nettoyer les em-dash du README, ajouter descriptions et topics aux repos, faire remonter les bons pins, ajouter un badge "en pause" sur un repo vitrine non maintenu, créer un README de profil type CV, aligner les liens LinkedIn et GitHub.
+4. **Carte de résultat partageable.** Copier le fichier `scoring-card.html` (à la racine du plugin) vers `scoring-card-<handle>.html` dans le répertoire courant, en substituant dans le bloc JS les valeurs `const HANDLE = "<handle>"` et `const SCORE = <score_100>`. Afficher ensuite :
+
+```
+Ta carte de score : ./scoring-card-<handle>.html
+Ouvre le fichier dans un navigateur, puis "Télécharger l'image" ou fais un screenshot. Partageable sur LinkedIn.
+```
 
 Reste factuel. La note sert à prioriser l'action, pas à classer une personne.
