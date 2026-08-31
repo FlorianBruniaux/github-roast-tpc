@@ -1,5 +1,17 @@
 # github-roast-tpc
 
+<table>
+  <tr>
+    <td width="64">
+      <a href="https://www.florian.bruniaux.com/about/?utm_source=github&amp;utm_medium=readme&amp;utm_campaign=github-roast-tpc"><img src="https://cc.bruniaux.com/author.png" width="56" height="56" alt="Florian Bruniaux" /></a>
+    </td>
+    <td>
+      <strong><a href="https://www.florian.bruniaux.com/about/?utm_source=github&amp;utm_medium=readme&amp;utm_campaign=github-roast-tpc">Florian BRUNIAUX</a></strong> &middot; AI Founding Engineer @ <a href="https://methode-aristote.fr/">Méthode Aristote</a><br />
+      13 years from developer to CTO / VP Eng &middot; <a href="https://www.florian.bruniaux.com/blog/?utm_source=github&amp;utm_medium=readme&amp;utm_campaign=github-roast-tpc">Blog &#8599;</a> &middot; <a href="https://www.florian.bruniaux.com/projects/?utm_source=github&amp;utm_medium=readme&amp;utm_campaign=github-roast-tpc">Projects &#8599;</a>
+    </td>
+  </tr>
+</table>
+
 A Claude Code plugin that audits a GitHub profile through its author's intent. It reviews READMEs, flags AI-generated markers, reads recruiter signals, and suggests keywords for findability. Born from [The Product Crew (TPC) GitHub Roast live, ep. 2](https://www.youtube.com/watch?v=gfDBEUImB-A).
 
 ## Philosophy
