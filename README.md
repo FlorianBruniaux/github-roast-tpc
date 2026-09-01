@@ -166,3 +166,15 @@ TPC_OFFERS_URL = (to fill in)
 ```
 
 3. StarMapper integration (optional). It powers the organic score and stargazer geography. No environment variable and no local server are needed: the skills call the public StarMapper HTTP API (`https://starmapper.bruniaux.com/api/mcp/...`) when a repo has been scanned, and fall back to raw `gh` signals (forks, watchers, releases) otherwise. To use a self-hosted StarMapper, give its base URL to the skill when prompted. Reminder: the organic score is gated at 500 stars, below which it returns `insufficient`.
+
+<!-- BEGIN GENERATED RELATED PROJECTS -->
+<!-- Source: https://github.com/FlorianBruniaux/FlorianBruniaux/blob/main/ecosystem/projects.json; project: github-roast-tpc -->
+## Explore the ecosystem
+
+These projects extend the workflow without duplicating this tool:
+
+- **Visualize with [StarMapper](https://github.com/FlorianBruniaux/starmapper)**: add geographic audience analysis through the existing optional integration.
+- **Learn with [Claude Code Ultimate Guide](https://github.com/FlorianBruniaux/claude-code-ultimate-guide)**: connect the plugin to Claude Code review and extension practices.
+
+[Browse the complete open-source galaxy](https://github.com/FlorianBruniaux#open-source-galaxy)
+<!-- END GENERATED RELATED PROJECTS -->
